@@ -1,5 +1,6 @@
 swat_objective_function_rch=function (x, calib_range, calib_params, flowgage, rch,save_results=F)
 {
+    pacman::p_load(SWATmodel,dplyr,EcoHydRology,topmodel,utils)
   calib_params$current <- x
   tmpdir=as.character(as.integer((runif(1)+1)*10000))
   tmpdir=paste(c(format(Sys.time(), "%s"),tmpdir,Sys.getpid()),sep="",collapse="")
