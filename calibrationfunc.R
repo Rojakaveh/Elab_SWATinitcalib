@@ -1,6 +1,5 @@
-swat_objective_function_rch_new=function (x, calib_range, calib_params, flowgage, rch,save_results=F)
+swat_objective_function_rch=function (x, calib_range, calib_params, flowgage, rch,save_results=F)
 {
-  pacman::p_load(SWATmodel,dplyr,EcoHydRology,topmodel,utils)
   calib_params$current <- x
   tmpdir=as.character(as.integer((runif(1)+1)*10000))
   tmpdir=paste(c(format(Sys.time(), "%s"),tmpdir,Sys.getpid()),sep="",collapse="")
@@ -9,7 +8,7 @@ swat_objective_function_rch_new=function (x, calib_range, calib_params, flowgage
   file.copy(list.files(),tmpdir)
   setwd(tmpdir)
   file.remove(list.files(pattern="output."))
-  alter_filesfn(calib_params)
+  alter_files(calib_params)
   libarch = if (nzchar(base::version$arch)) paste("libs", base::version$arch, sep = "/") else "libs"
   swatbin <- "rswat2012.exe"
   junkout=system(shQuote(paste(path.package("SWATmodel"), libarch, swatbin, sep = "/")),intern = TRUE)
