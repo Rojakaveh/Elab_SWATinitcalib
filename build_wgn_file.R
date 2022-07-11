@@ -42,7 +42,7 @@ build_wgn_file=function(metdata_df=WXData,declat=flowgage$declat,declon=flowgage
   #outfile=paste(args[4],"/wgn.df",sep="")
   #write.table(wgdata,file=outfile)
   header=paste0("This line is not used\n  LATITUDE =",sprintf("%7.2f",declat)," LONGITUDE =",sprintf("%7.2f",declon),"
-  ELEV [m] =",sprintf("%7.2f",mean(WXData$prcpElevation,na.rm=T)),"
+  ELEV [m] =",sprintf("%7.2f",mean(metdata_df$prcpElevation,na.rm=T)),"
   RAIN_YRS =  10.00
 ")
   outfile=paste("000010000.wgn",sep="")
